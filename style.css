@@ -1,0 +1,238 @@
+*{
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+
+body{
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    position: relative;
+    max-height: 100vh;
+    height: 100%;
+
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background: url('./images/thomas-necklen-tG1OWSFMRwg-unsplash.jpg') no-repeat center center/cover;
+
+}
+.container{
+    position: relative;
+    margin:80px auto;
+
+}
+.circle{
+    box-shadow:10px 10px 30px rgba(0,0,0,0.5);
+
+    position: relative;
+    border-radius: 50%;
+    width:50rem;
+    height: 50rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 0.5s linear;
+   
+}
+
+.cicle-thin{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    top:0;
+    left:0;
+    border-radius: 50%;
+    border: 2px solid rgba(9,56,62,0.1);
+    z-index: 50;
+   
+
+animation: rotate 12s linear forwards infinite;
+animation-play-state: paused;
+}
+
+
+.cicle-thin::after{
+   content:'';
+   background: url('./images/ellipses_dial.png') no-repeat center center/cover;
+   height: 100%;
+   width: 100%;
+   position: absolute;
+   top:0;
+   left:0;
+   right:0;
+   bottom: 0;
+   border-radius: 50%;
+   transform: scale(0.95);
+   z-index: -2;
+ 
+
+
+
+
+}
+
+.circle-thick{
+    position: absolute;
+    width: 99.9%;
+height: 99.9%;
+
+border:1px solid transparent;
+border-color: #fe5b18 transparent;;
+border-radius: 50%;
+transform: rotate(-45deg);
+z-index: 2;
+animation: rotateThick 12s linear forwards infinite;
+animation-play-state: paused;
+}
+
+@keyframes rotateThick{
+    0%{
+        transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(-405deg);
+    }
+}
+
+.navigation{
+   position: absolute;
+    z-index: 100;
+    bottom: 40%;
+    transform: translateY(40px);
+}
+
+.action-btn{
+ padding: 10px;
+  margin:0 20px;
+  border:none;
+  color:#dfdbdf;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 100;
+
+}
+.action-btn-big{
+    font-size: 35px;
+}
+
+button:focus{
+    outline: none;
+}
+
+.img-container{
+    width:25px;
+    display: block;
+    height:25px;
+    border-width: 2px;
+    top:5.5rem;
+    right: 5.6rem;
+    position: absolute;
+   z-index: 5;
+box-shadow: 0 2px 10px  rgba(9,56,62,0.1);   
+
+}
+.img-container img{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+    }
+
+
+.title{
+    position: absolute;
+    top:0;
+    width:calc(100% - 40px);
+    height: 100px;
+    text-align: center;
+left:-10rem;
+    transform: translateY(0px);
+    font-size: 8rem;
+    position: absolute;
+    text-transform: uppercase;
+    letter-spacing: 3rem;
+    font-weight: 400;
+    opacity: 0.5;
+
+    /* left:50%;
+    /* transform: translateX(-50%); */
+}
+
+
+.progress-container{
+    width: 20%;
+    height: 4px;
+    background-color: transparent;
+    position: absolute;
+    transform: translateY(30px);
+    border-radius: 5px;
+    z-index: 100;
+    cursor: pointer;
+
+ 
+
+}
+.progress{
+width: 0%;
+height: 4px;
+background-color:orange;
+border-radius: 5px;
+
+}
+
+
+.container.show .cicle-thin{
+    animation-play-state: running;
+}
+.container.show .circle-thick{
+    animation-play-state: running;
+
+}
+
+.container.show .circle.grow{
+    animation:grow 2s linear forwards
+}
+.container.show .circle.shrink{
+    animation:shrink 2s linear forwards
+}
+@keyframes shrink{
+    0%{
+        transform:scale(1)
+    }
+    100%{
+        transform:scale(0.9);
+    }
+}
+@keyframes grow{
+    0%{
+        transform:scale(0.9)
+    }
+    100%{
+        transform:scale(1.1);
+    }
+}
